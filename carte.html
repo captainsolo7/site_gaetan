@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte - Urbaniste de Marcy l'Étoile</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo Urbaniste de Marcy l'Étoile" class="logo">
+            <span class="logo-text">ESPACES VERTS</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="accueil.html">Accueil</a></li>
+            <li><a href="carte.html">Carte</a></li>
+            <li><a href="randonnee.html">Randonnée</a></li>
+        </ul>
+    </nav>
+
+    <hr class="divider">
+    <div class="container">
+
+        <main>
+            <h1>Carte Interactive de Marcy l'Étoile</h1>
+            <div id="map" style="height: 500px; width: 100%;"></div>
+
+            <section id="info-section">
+                <h2>Informations sur la zone</h2>
+                <p id="location-info">Cliquez sur un emplacement de la carte pour afficher des informations.</p>
+            </section>
+        </main>
+
+        <script>
+            // Initialisation de la carte
+            const map = L.map('map').setView([45.78, 4.71], 13);
+
+            // Couche de tuiles OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 20,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+
+            // Marqueurs pour les emplacements
+            const locations = [
+                {
+                    name: "Vallon des Pierres Rouges",
+                    coords: [45.784694, 4.709],
+                    info: "Ce vallon d'une superficie d'environ environ 5,3 ha, relis le parc de Lacroix Laval au centre de Marcy l'Étoile. Le Vallon suit le tracé du ruisseau, des pierres rouges dans les berges ont ont été aménagés pour favoriser la promenade et préserver la végétation riveraine Peuplier, saule, buisson indigène. Le ruisseau, créé un cadre ombragé et accueille pour la faune local, notamment les oiseaux et les insectes. Le Vallon des pierre rouge est une véritable ressource verte permettant de relier un espace naturel (le parc de Lacroix Laval) au cœur de l'urbanisation, Marcylloise. Il constitue une respiration dans le tissu urbain, et un lieu de promenade privilégiée pour les habitants. Des travaux ont été réalisés pour améliorer son accessibilité, notamment avec des chemins piétons et des bancs des panneaux pédagogiques. Explique également également la biodiversité du site. "
+                },
+                {
+                    name: "Les terres agricoles de l'Ouest de Marcy l’Étoile",
+                    coords: [45.787722, 4.697528],
+                    info: "Les terres agricoles se situe principalement en frange ouest du territoire communal. En continuité avec le plateau agricole de l'Ouest Lyonnais, elle formule une limite naturelle entre les secteurs urbanisés de Marcy l’étoile et les communes environnant comme lentilly ou de dommartin. Ces cultures, céréalières, de maréchage, sont délimitées par des bocages composés, principalement de chaînes de charme et de noisetier qui jouent un rôle écologique crucial en servant d’abri pour les oiseaux et les petits mammifères. Pour vous des chemins ruraux traverse ces zones offrant des itinéraires de promenades et de découverte. Depuis cette terre, il est possible d'admirer des panorama sur les mont du Lyonnais et la vallée de la Saône, le contraste entre les champs cultivés et les bocages et les bois environnement crée un paysage harmonieux et apaisant. Les anciennes ferment situées dans cette zone, témoignent du passé rural de Marcy l'Étoile. Certaines sont encore en activité. Tandis que d'autres ont été réhabilitées en habitation et en lieu de vente directe. Les terres agricoles de l'Ouest s'intègre dans la trame verte et bleue de la région qui contribuent à la préservation de la biodiversité et la lutte contre l’artificialisation des sols. Les petites zones des ruisseaux associés favorise également la recharge des nappes phréatiques. "
+                },
+                {
+                    name: "Les terres agricoles de l'Ouest de Marcy l’Étoile",
+                    coords: [45.78175, 4.6965],
+                    info: "Les terres agricoles se situe principalement en frange ouest du territoire communal. En continuité avec le plateau agricole de l'Ouest Lyonnais, elle formule une limite naturelle entre les secteurs urbanisés de Marcy l’étoile et les communes environnant comme lentilly ou de dommartin. Ces cultures, céréalières, de maréchage, sont délimitées par des bocages composés, principalement de chaînes de charme et de noisetier qui jouent un rôle écologique crucial en servant d’abri pour les oiseaux et les petits mammifères. Pour vous des chemins ruraux traverse ces zones offrant des itinéraires de promenades et de découverte. Depuis cette terre, il est possible d'admirer des panorama sur les mont du Lyonnais et la vallée de la Saône, le contraste entre les champs cultivés et les bocages et les bois environnement crée un paysage harmonieux et apaisant. Les anciennes ferment situées dans cette zone, témoignent du passé rural de Marcy l'Étoile. Certaines sont encore en activité. Tandis que d'autres ont été réhabilitées en habitation et en lieu de vente directe. Les terres agricoles de l'Ouest s'intègre dans la trame verte et bleue de la région qui contribuent à la préservation de la biodiversité et la lutte contre l’artificialisation des sols. Les petites zones des ruisseaux associés favorise également la recharge des nappes phréatiques. "
+                },
+                {
+                    name: "Le ruisseau du Poirier et ses vallons",
+                    coords: [45.794139, 4.706306],
+                    info: "Le ruisseau du poirier traverse le territoire communal, mais il est principalement associé à la partie nord de Marcy Étoile. Il s'inscrit dans la trame des vallons et des espaces agricoles.Ses berges sont souvent bordés par des arbres, comme les peupliers et les saules, ainsi que par une végétation basse, composée de buisson. Cette végétation stabilise les sols et favorise la biodiversité."
+                },
+                {
+                    name: "Les Bois de l'étoile et les Terres d’or",
+                    coords: [45.779283, 4.721444],
+                    info: "Cette zone située à l’est de Marcy l’Étoile, mêle terre, agricoles et boisements. Cet espace est une zone de transition entre l'environnement urbain industriel et les espaces naturels et agricoles plus ouverts Plusieurs cultures ainsi qu’une écurie sont présentes. Ces terres jouent un rôle dans la préservation de la trame verte et bleue. Elles sont aussi importantes dans la gestion des eaux de ruissellement Dans le bois, on peut retrouver du chêne du charme, des arbustes variés. Certains arbres sont centenaires. Ces territoires sont des réservoir de biodiversité, comprenant des oiseaux nicheurs, des petits mammifères et peut-être des insectes pollinisateur essentiel pour les terres agricoles voisines. Il fait partie de la trame verte qui connecte les espaces naturels autour de la commune facilitant les déplacements des espèces entre le parc de Lacroix Laval, les vallons et les terres agricoles Ils forment aussi une barrière visuelle et acoustique entre le site de Sanofi Pasteur et le reste du territoire. Plusieurs chemins le composent pour le bien-être des randonneurs."
+                },
+                {
+                    name: "Les Bois de l'étoile et les Terres d’or",
+                    coords: [45.778833, 4.725167],
+                    info: "Cette zone située à l’est de Marcy l’Étoile, mêle terre, agricoles et boisements. Cet espace est une zone de transition entre l'environnement urbain industriel et les espaces naturels et agricoles plus ouverts Plusieurs cultures ainsi qu’une écurie sont présentes. Ces terres jouent un rôle dans la préservation de la trame verte et bleue. Elles sont aussi importantes dans la gestion des eaux de ruissellement Dans le bois, on peut retrouver du chêne du charme, des arbustes variés. Certains arbres sont centenaires. Ces territoires sont des réservoir de biodiversité, comprenant des oiseaux nicheurs, des petits mammifères et peut-être des insectes pollinisateur essentiel pour les terres agricoles voisines. Il fait partie de la trame verte qui connecte les espaces naturels autour de la commune facilitant les déplacements des espèces entre le parc de Lacroix Laval, les vallons et les terres agricoles Ils forment aussi une barrière visuelle et acoustique entre le site de Sanofi Pasteur et le reste du territoire. Plusieurs chemins le composent pour le bien-être des randonneurs."
+                },
+                {
+                    name: "Ruisseau de Ribes et ses Vallons",
+                    coords: [45.773028, 4.711694],
+                    info: " Le ruisseau de Ribes traverse une partie du territoire communal, notamment à proximité du parc Lacroix Laval, et dans la proximité des valons, qui dessinent les limites naturelles de Marcy l’étoile. Il contribue à structurer le paysage local. Le ruisseau est alimenté par les précipitations locales et les écoulements souterrains. Il présente un débit modeste, mais constant typique des ruisseaux des des zones vallonné de l'Ouest lyonnais. Le vallon ballon de Ribes est caractérisé par des champs,  couverts de prairie et de bosquets, il joue un rôle essentiel dans la préservation des habitats naturels pour la faune locale. Les berges du ruisseau sont bordées d'arbustes, saules, aulnes et peupliers qui stabilisent, les sols et favorise la biodiversité aquatique et terrestre Le ruisseau de Ribes constitue un corridor naturel qui relie différents habitats. Il permet aux espèces notamment, les amphibiens et les oiseaux de se déplacer à travers le territoire. Le ruisseau joue un rôle dans la gestion des eaux pluviales en réduisant les risques d'inondations et en contribuant à l'alimentation des nappes phréatiques locales Pour vous, le Vallon des ribes est accessible via des chemins piétons, ouvrant aux habitants, un espace espace de détente et de découverte"
+                },
+
+                {
+                    name: "Domaine de Lacroix Laval",
+                    coords: [45.788778, 4.721167],
+                    info: `Le domaine de la Croix Laval s'étend sur 100 ha ce qui fait l'un des plus vastes espaces naturels du secteur ouest Lyonnais. Il est situé aux portes de l’agglomération lyonnaise entre les communes de Marcy l’étoile, Charbonnière les Bains et la Tour-de-Salvagny. Le domaine présente une mosaïque de milieu naturel, des prairies fleuries, des bois, des étangs et des des vallons. Ces écosystèmes favorise une biodiversité remarquables abritant des espèces animales et végétales typique de la région lyonnaise. Plusieurs ruisseaux traversent le parc, participant à la régulation hydraulique local en créant une ambiance paisible En plus, le parc abrite un château du XVIe siècle, entouré d'un jardin à la Française, véritable, témoignage de l'architecture paysager classique 
+                     `
+                },
+            ];
+
+            // Ajout des marqueurs sur la carte
+            locations.forEach(location => {
+                const marker = L.marker(location.coords).addTo(map);
+                marker.bindPopup(location.name);
+                marker.on('click', () => {
+                    document.getElementById('location-info').textContent = location.info;
+                });
+            });
+        </script>
+        <h2> Pour plus d'information sur le parc de lacroix laval:</h2>
+        <a href="https://www.grandlyon.com/parc/domaine-de-lacroix-laval" target="_blank">Domaine de Lacroix-Laval
+            (Grand Lyon)</a><br>
+        <a href="https://www.marcyletoile.fr/parc-de-lacroix-laval/" target="_blank">Parc-de-lacroix-laval</a><br>
+        <h2> Pour plus d'information sur Vallon des pierres rouges:</h2>
+
+        <a href=" https://www.marcyletoile.fr/actualites/lancement-des-travaux-du-vallon-des-pierres-rouges/"
+            target="_blank">Vallon des pierres rouges</a><br>
+
+    </div>
+    <footer>
+        <p>&copy; 2025 Urbaniste de Marcy l'Étoile</p>
+    </footer>
+
+
+</body>
+
+</html>

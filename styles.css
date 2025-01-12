@@ -1,0 +1,182 @@
+/* Barre de navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    height: 80px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    color: #29876b;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+.navbar .logo img {
+    height: 80px;
+    padding: 20px 50px 20px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: rgb(135, 135, 135);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #1b5e20;
+    border-radius: 16px;
+    color: #d4edda;
+    padding: 0.6em;
+    transition: ease-in-out 0.5s;
+}
+
+/* Sections générales */
+main {
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #ffffff;
+}
+
+h1,
+h2 {
+    text-align: center;
+    color: #2a4b33;
+}
+
+.welcome {
+    margin-bottom: 30px;
+}
+
+.highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.highlight .image {
+    flex: 1 1 300px;
+    max-width: 350px;
+}
+
+.highlight .image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.highlight .description {
+    flex: 2 1 500px;
+}
+
+.TITRE-1 {
+    text-align: center;
+    margin: 40px 0;
+}
+
+p {
+    text-align: justify;
+    margin-bottom: 1.5em;
+}
+
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #d3d3d3;
+    color: #fff;
+}
+
+/* Carte interactive */
+#map {
+    border: 2px solid #2e7d32;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#info-section {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #e8f5e9;
+    border-radius: 10px;
+}
+
+#info-section h2 {
+    margin-top: 0;
+    color: #1b5e20;
+}
+
+/* Page randonnée */
+.title-center {
+    color: #795548;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.text-content {
+    text-align: justify;
+    line-height: 1.8;
+    padding: 0 15%;
+}
+
+.text-content ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.text-content ul li {
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #c3c3c3;
+    color: white;
+    margin-top: 20px;
+}
